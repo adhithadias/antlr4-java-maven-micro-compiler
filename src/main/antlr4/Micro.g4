@@ -2,7 +2,7 @@ grammar Micro;
 
 program: Program id Begin program_body End;
 id: Identifier;
-program_body: 'PROGRAM_BODY';
+program_body: 'PROGRAM_BODY' | ;
 
 Program : 'PROGRAM';
 Begin : 'BEGIN';

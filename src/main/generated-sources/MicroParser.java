@@ -223,10 +223,23 @@ public class MicroParser extends Parser {
 		Program_bodyContext _localctx = new Program_bodyContext(_ctx, getState());
 		enterRule(_localctx, 4, RULE_program_body);
 		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(14);
-			match(T__0);
+			setState(16);
+			_errHandler.sync(this);
+			switch (_input.LA(1)) {
+			case T__0:
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(14);
+				match(T__0);
+				}
+				break;
+			case End:
+				enterOuterAlt(_localctx, 2);
+				{
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
@@ -241,11 +254,12 @@ public class MicroParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3D\23\4\2\t\2\4\3\t"+
-		"\3\4\4\t\4\3\2\3\2\3\2\3\2\3\2\3\2\3\3\3\3\3\4\3\4\3\4\2\2\5\2\4\6\2\2"+
-		"\2\17\2\b\3\2\2\2\4\16\3\2\2\2\6\20\3\2\2\2\b\t\7\4\2\2\t\n\5\4\3\2\n"+
-		"\13\7\5\2\2\13\f\5\6\4\2\f\r\7\6\2\2\r\3\3\2\2\2\16\17\7\30\2\2\17\5\3"+
-		"\2\2\2\20\21\7\3\2\2\21\7\3\2\2\2\2";
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3D\25\4\2\t\2\4\3\t"+
+		"\3\4\4\t\4\3\2\3\2\3\2\3\2\3\2\3\2\3\3\3\3\3\4\3\4\5\4\23\n\4\3\4\2\2"+
+		"\5\2\4\6\2\2\2\22\2\b\3\2\2\2\4\16\3\2\2\2\6\22\3\2\2\2\b\t\7\4\2\2\t"+
+		"\n\5\4\3\2\n\13\7\5\2\2\13\f\5\6\4\2\f\r\7\6\2\2\r\3\3\2\2\2\16\17\7\30"+
+		"\2\2\17\5\3\2\2\2\20\23\7\3\2\2\21\23\3\2\2\2\22\20\3\2\2\2\22\21\3\2"+
+		"\2\2\23\7\3\2\2\2\3\22";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
