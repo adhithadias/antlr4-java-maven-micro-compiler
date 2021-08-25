@@ -1,5 +1,12 @@
 
+## Dependencies
+1. Java
+2. Maven
 
+## Execute the code
+```bash
+mvn compile exec:java
+```
 
 ## References
 
