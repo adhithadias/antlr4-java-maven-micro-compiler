@@ -7,6 +7,9 @@
 ## Execute the code
 ```bash
 mvn compile exec:java
+
+# for executing tests
+mvn test
 ```
 
 ## References
