@@ -53,8 +53,6 @@ public class TestScanner extends TestResourcesUtils {
 
     }
 
-    static StringBuilder stringBuilder;
-
     @Test
     public void testInputs() {
         String path = "src/test/resources/test/input_files";
@@ -62,16 +60,16 @@ public class TestScanner extends TestResourcesUtils {
         File[] listOfFiles = directoryPath.listFiles();
         assert listOfFiles != null;
         for (File listOfFile : listOfFiles) {
-            stringBuilder = new StringBuilder();
+            Micro.stringBuilder = new StringBuilder();
             String text = getStringFromInputStream(getFileFromResourceAsStream(listOfFile.toString().substring(19)));
             System.out.println(listOfFile.toString().substring(19));
             try {
                 CharStream chars = new ANTLRInputStream(text);
                 MicroCLexer lexer = new MicroCLexer(chars);
                 MicroCParser parser = new MicroCParser(new CommonTokenStream(lexer));
-                parser.setErrorHandler(new ParserErrorStrategy());
+                parser.setErrorHandler(new Micro.ParserErrorStrategy());
                 ParseTree parseTree = parser.program(); // runs through the parser to see if the input generates a correct parser tree
-                stringBuilder.append("Accepted");
+                Micro.stringBuilder.append("Accepted");
 
             } catch (ParseCancellationException ignored) {
                 System.out.println("ParseCancellationException");
@@ -79,34 +77,20 @@ public class TestScanner extends TestResourcesUtils {
                 System.out.println(ignored.getMessage());
             }
 
-            if (stringBuilder.toString().length()>11) {
+            if (Micro.stringBuilder.toString().length()>11) {
                 Assertions.assertEquals(
                         getStringFromInputStream(getFileFromResourceAsStream("output/output_files" + listOfFile.toString().substring(35))),
-                        stringBuilder.substring(0,12));
+                        Micro.stringBuilder.substring(0,12));
                 continue;
             }
 
             Assertions.assertEquals(
                     getStringFromInputStream(getFileFromResourceAsStream("output/output_files" + listOfFile.toString().substring(35))),
-                    stringBuilder.toString());
+                    Micro.stringBuilder.toString());
 
         }
 
     }
 
-    static private class ParserErrorStrategy extends BailErrorStrategy {
 
-        @Override
-        public void reportError(Parser recognizer, RecognitionException ex) {
-            stringBuilder.append("Not Accepted");
-            System.out.println("Not Accepted 1");
-        }
-
-        @Override
-        public Token recoverInline(Parser recognizer) throws RecognitionException {
-            stringBuilder.append("Not Accepted");
-            System.out.println("Not Accepted,2");
-            return null;
-        }
-    }
 }
