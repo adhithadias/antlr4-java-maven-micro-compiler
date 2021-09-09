@@ -7,8 +7,8 @@ public class Micro {
     public static void main(String[] args) throws Exception {
         System.out.println("Hello Adhitha Dias\n");
 
-        CharStream chars = new ANTLRInputStream("PROGRAM pg BEGIN PROGRAM_BODY END");
-        MicroLexer scanner = new MicroLexer(chars);
+        CharStream chars = new ANTLRInputStream("int main () { return 0; }");
+        MicroCLexer scanner = new MicroCLexer(chars);
         Vocabulary vocabulary = scanner.getVocabulary();
 
         for(Token token: scanner.getAllTokens()){

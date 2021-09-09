@@ -16,11 +16,11 @@ public class TestScanner extends TestResourcesUtils {
 
     @Test
     public void testMicroScanner() {
-        CharStream chars = new ANTLRInputStream("PROGRAM pg BEGIN PROGRAM_BODY END");
-        MicroLexer scanner = new MicroLexer(chars);
+        CharStream chars = new ANTLRInputStream("int main () { return 0; }");
+        MicroCLexer scanner = new MicroCLexer(chars);
         Vocabulary vocabulary = scanner.getVocabulary();
 
-        String[] strList = new String[] { "'PROGRAM'", "Identifier", "'BEGIN'", "'PROGRAM_BODY'", "'END'" };
+        String[] strList = new String[] { "'int'", "'main'", "'('", "')'", "'{'", "'return'", "INT_LITERAL", "';'", "'}'"  };
         List<String> tokenDisplayNameList = Arrays.asList(strList);
         int i=0;
         for(Token token: scanner.getAllTokens()){
@@ -28,10 +28,10 @@ public class TestScanner extends TestResourcesUtils {
             ++i;
         }
 
-        String text = getStringFromInputStream(getFileFromResourceAsStream("test1/input1.micro"));
+        String text = getStringFromInputStream(getFileFromResourceAsStream("test/input1.uC"));
 
         chars = new ANTLRInputStream(text);
-        scanner = new MicroLexer(chars);
+        scanner = new MicroCLexer(chars);
         vocabulary = scanner.getVocabulary();
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -43,7 +43,7 @@ public class TestScanner extends TestResourcesUtils {
             ++j;
         }
 
-        String expected = getStringFromInputStream(getFileFromResourceAsStream("test1/input1.result"));
+        String expected = getStringFromInputStream(getFileFromResourceAsStream("output/input1.out"));
         Assertions.assertEquals(expected, stringBuilder.toString());
     }
 }
