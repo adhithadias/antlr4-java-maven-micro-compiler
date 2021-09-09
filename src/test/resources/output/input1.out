@@ -1,0 +1,19 @@
+Token Type: 'int'
+Value: int
+Token Type: 'main'
+Value: main
+Token Type: '('
+Value: (
+Token Type: ')'
+Value: )
+Token Type: '{'
+Value: {
+Token Type: 'return'
+Value: return
+Token Type: INT_LITERAL
+Value: 0
+Token Type: ';'
+Value: ;
+Token Type: '}'
+Value: }
+
